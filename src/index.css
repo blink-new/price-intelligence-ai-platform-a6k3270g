@@ -1,0 +1,355 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 210 40% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 8%;
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 210 40% 8%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 271 91% 65%;
+    --chart-1: 271 91% 65%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 43 96% 56%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 221 83% 53%;
+    --radius: 0.5rem;
+    
+    /* Enhanced gradient colors for vibrant design */
+    --gradient-purple: 271 91% 65%;
+    --gradient-blue: 221 83% 53%;
+    --gradient-teal: 180 84% 39%;
+    --gradient-green: 160 84% 39%;
+    --gradient-orange: 25 95% 53%;
+    --gradient-pink: 330 81% 60%;
+    --gradient-cyan: 189 94% 43%;
+    --gradient-gold: 45 93% 47%;
+    --gradient-silver: 210 11% 71%;
+    --gradient-gray: 210 9% 31%;
+  }
+
+  .dark {
+    --background: 15 23% 4%;
+    --foreground: 213 31% 91%;
+    --card: 217 33% 17%;
+    --card-foreground: 213 31% 91%;
+    --popover: 217 33% 17%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 10% 64%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 271 91% 65%;
+    --chart-1: 271 91% 65%;
+    --chart-2: 160 84% 39%;
+    --chart-3: 43 96% 56%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 221 83% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Primary gradient: Purple → Blue → Teal → Green */
+  .gradient-primary {
+    background: linear-gradient(135deg, 
+      hsl(var(--gradient-purple)) 0%, 
+      hsl(var(--gradient-blue)) 25%, 
+      hsl(var(--gradient-teal)) 50%, 
+      hsl(var(--gradient-green)) 100%);
+  }
+  
+  /* Secondary gradient: Orange → Pink */
+  .gradient-secondary {
+    background: linear-gradient(135deg, 
+      hsl(var(--gradient-orange)) 0%, 
+      hsl(var(--gradient-pink)) 100%);
+  }
+  
+  /* Tier-specific gradients */
+  .gradient-blue {
+    background: linear-gradient(135deg, 
+      hsl(221deg 83% 53%) 0%, 
+      hsl(189deg 94% 43%) 100%);
+  }
+  
+  .gradient-green {
+    background: linear-gradient(135deg, 
+      hsl(160deg 84% 39%) 0%, 
+      hsl(180deg 84% 39%) 100%);
+  }
+  
+  .gradient-purple {
+    background: linear-gradient(135deg, 
+      hsl(271deg 91% 65%) 0%, 
+      hsl(330deg 81% 60%) 100%);
+  }
+  
+  .gradient-orange {
+    background: linear-gradient(135deg, 
+      hsl(45deg 93% 47%) 0%, 
+      hsl(25deg 95% 53%) 100%);
+  }
+  
+  .gradient-silver {
+    background: linear-gradient(135deg, 
+      hsl(210deg 11% 71%) 0%, 
+      hsl(210deg 9% 31%) 100%);
+  }
+  
+  /* Animated gradients */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-flow 3s ease infinite;
+  }
+  
+  .animate-gradient-fast {
+    background-size: 200% 200%;
+    animation: gradient-flow 1.5s ease infinite;
+  }
+  
+  /* Rainbow border for upload areas */
+  .rainbow-border {
+    position: relative;
+    background: white;
+    border-radius: 0.5rem;
+  }
+  
+  .rainbow-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    background: linear-gradient(45deg, 
+      hsl(var(--gradient-purple)), 
+      hsl(var(--gradient-blue)), 
+      hsl(var(--gradient-teal)), 
+      hsl(var(--gradient-green)),
+      hsl(var(--gradient-orange)),
+      hsl(var(--gradient-pink)));
+    border-radius: inherit;
+    animation: rainbow-flow 3s linear infinite;
+    background-size: 300% 300%;
+  }
+  
+  .rainbow-border > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Confidence and price range bars */
+  .confidence-bar {
+    background: linear-gradient(90deg, 
+      hsl(0deg 84% 60%) 0%, 
+      hsl(43deg 96% 56%) 50%, 
+      hsl(160deg 84% 39%) 100%);
+  }
+  
+  .price-range-bar {
+    background: linear-gradient(90deg, 
+      hsl(0deg 84% 60%) 0%, 
+      hsl(43deg 96% 56%) 50%, 
+      hsl(160deg 84% 39%) 100%);
+  }
+  
+  /* Status badges */
+  .status-completed {
+    @apply bg-green-500 text-white;
+  }
+  
+  .status-processing {
+    @apply bg-orange-500 text-white animate-pulse;
+  }
+  
+  .status-failed {
+    @apply bg-red-500 text-white;
+  }
+  
+  /* Marketplace brand colors */
+  .marketplace-ebay {
+    background: linear-gradient(135deg, #e53238 0%, #0064d2 50%, #f5af02 100%);
+  }
+  
+  .marketplace-poshmark {
+    background: linear-gradient(135deg, #731a3d 0%, #ac2c5a 100%);
+  }
+  
+  .marketplace-facebook {
+    background: linear-gradient(135deg, #1877f2 0%, #42a5f5 100%);
+  }
+  
+  .marketplace-amazon {
+    background: linear-gradient(135deg, #f90 0%, #146eb4 100%);
+  }
+  
+  .marketplace-mercari {
+    background: linear-gradient(135deg, #f60 0%, #ff8533 100%);
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(271deg 91% 65% / 30%);
+  }
+  
+  .glow-secondary {
+    box-shadow: 0 0 20px hsl(25deg 95% 53% / 30%);
+  }
+  
+  /* Loading spinner */
+  .loading-spinner {
+    background: conic-gradient(
+      hsl(var(--gradient-purple)),
+      hsl(var(--gradient-blue)),
+      hsl(var(--gradient-teal)),
+      hsl(var(--gradient-green)),
+      hsl(var(--gradient-orange)),
+      hsl(var(--gradient-pink)),
+      hsl(var(--gradient-purple))
+    );
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Success burst animation */
+  .success-burst {
+    animation: success-burst 0.6s ease-out;
+  }
+}
+
+@keyframes gradient-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes rainbow-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(271deg 91% 65% / 30%);
+  }
+
+  50% {
+    box-shadow: 0 0 30px hsl(271deg 91% 65% / 60%);
+  }
+}
+
+@keyframes success-burst {
+  0% {
+    transform: scale(0.8);
+    opacity: 0%;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 100%;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 100%;
+  }
+
+  to {
+    stroke-dashoffset: 0%;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-draw-line {
+  stroke-dasharray: 100%;
+  animation: draw-line 2s ease-in-out forwards;
+}
+
+/* Hover effects for cards */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
+}
+
+/* Floating elements */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Scroll-triggered animations */
+.scroll-fade-in {
+  opacity: 0%;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-fade-in.visible {
+  opacity: 100%;
+  transform: translateY(0);
+}
